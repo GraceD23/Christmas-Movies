@@ -1,0 +1,9 @@
+{% assign full = rating | floor %}
+{% assign half = rating | minus: full %}
+{% for i in (1..5) %}
+  {% if i <= full %}
+    ★
+  {% else %}
+    ☆
+  {% endif %}
+{% endfor %}
