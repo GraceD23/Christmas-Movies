@@ -1,0 +1,4 @@
+title: Movie Reviews
+collections:
+  reviews:
+    output: false

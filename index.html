@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<header class="header">
+  <img src="/assets/img/header.png" alt="Movie Reviews">
+</header>
+
+<div class="year-filter">
+  <select id="yearSelect" onchange="filterYear()">
+    <option value="2025">2025</option>
+    <option value="2024">2024</option>
+  </select>
+</div>
+
+<section class="grid">
+{% assign items = site.reviews | sort: "date" | reverse %}
+{% for r in items %}
+<article class="polaroid" data-year="{{ r.year }}">
+  <div class="poster-frame">
+    <img class="poster" src="/{{ r.poster }}" alt="{{ r.title }} poster">
+  </div>
+  <h2 class="movie-title">{{ r.title }}</h2>
+  <div class="stars">{% include stars.html rating=r.rating %}</div>
+  <div class="review">{{ r.content | markdownify }}</div>
+</article>
+{% endfor %}
+</section>
+
+<script>
+function filterYear() {
+  const year = document.getElementById("yearSelect").value;
+  document.querySelectorAll(".polaroid").forEach(card => {
+    card.style.display = card.dataset.year === year ? "block" : "none";
+  });
+}
+filterYear();
+</script>
