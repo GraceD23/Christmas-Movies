@@ -1,4 +1,5 @@
-title: Movie Reviews
+title: Christmas Movies
+baseurl: "/Christmas-Movies"
 collections:
   reviews:
     output: false
